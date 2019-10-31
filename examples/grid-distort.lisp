@@ -14,9 +14,10 @@
 
 
 (defun main (size fn)
-  (let* ((ngrid 80)
+  (let* ((scale (/ size 1000))
+         (ngrid 80)
          (snk (snek:make :max-verts 10000))
-         (grid (get-grid size 50d0 ngrid))
+         (grid (get-grid size (* scale 50d0) ngrid))
          (state-gen (get-walker-state-gen (lambda () (rnd:get-acc-circ-stp*))))
          (sand (sandpaint:make size
                  :fg (pigment:white 0.05)
@@ -41,15 +42,15 @@
 
       (snek:with (snk)
         (snek:itr-verts (snk v)
-          (snek:move-vert? v (funcall state-gen v 0.000009d0))
+          (snek:move-vert? v (funcall state-gen v (* scale 0.000009d0)))
           ;(snek:move-vert? v (rnd:in-circ 0.4d0))
           ))
 
       (snek:itr-grps (snk g :collect nil)
-        (sandpaint:bzspl-stroke sand (snek:get-grp-as-bzspl snk g) 100)))
+        (sandpaint:bzspl-stroke sand (snek:get-grp-as-bzspl snk g) (* scale scale 100))))
 
       (snek:itr-grps (snk g :collect nil)
-        (sandpaint:bzspl-stroke sand (snek:get-grp-as-bzspl snk g) 50000))
+        (sandpaint:bzspl-stroke sand (snek:get-grp-as-bzspl snk g) (* scale scale 50000)))
 
       ;(snek:itr-grps (snk g :collect nil)
       ;  (sandpaint:lin-path sand
@@ -74,5 +75,5 @@
     (sandpaint:save sand fn :gamma 1.5d0)))
 
 
-(time (main 1000 (second (cmd-args))))
+(time (main (parse-integer (third (cmd-args))) (second (cmd-args))))
 
