@@ -50,8 +50,6 @@
                (:file "snek-alterations")
                (:file "snek-extra")))
 
-(asdf:load-system "snek")
-
 (setf *random-state* (make-random-state t))
 (setf *print-pretty* t)
 

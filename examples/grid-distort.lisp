@@ -4,6 +4,7 @@
 (load "../utils/state")
 (load "../utils/grid")
 
+(asdf:load-system "snek")
 
 
 (defun up-down (p n)

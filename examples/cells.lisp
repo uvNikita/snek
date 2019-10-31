@@ -4,6 +4,7 @@
 (load "../utils/force")
 
 
+(asdf:load-system "snek")
 
 (defun init-snek (n m size xy)
   (let ((snk (snek:make :max-verts 5000)))

@@ -2,6 +2,7 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
 
 
 (defun get-make-chr (vert-num* char-rad scale)
@@ -35,11 +36,12 @@
 
 
 (defun main (size fn)
-  (let ((border 100d0)
+  (let* ((scale (/ size 1000))
+        (border (* scale 100d0))
         (char-rad 18d0)
         (line-num 20)
         (num-words 10)
-        (char-scale (vec:vec 0.5d0 1.5d0))
+        (char-scale (vec:vec (* scale 0.5d0) (* scale 1.5d0)))
         (sand (sandpaint:make size
                               :fg (pigment:black 0.009)
                               :bg (pigment:white))))
@@ -53,8 +55,8 @@
                (get-make-words
                  (get-make-word (get-make-chr (list 2 4) char-rad char-scale)
                                 (list 3 10)
-                                (* 0.5 char-rad))
-                 char-rad)))
+                                (* 0.5 scale char-rad))
+                 (* scale char-rad))))
 
         ;(snek:with (snk)
         ;  (snek:itr-verts (snk v)
@@ -66,13 +68,13 @@
         (loop for i from 0 below 200 do
           (snek:with (snk)
             (snek:itr-verts (snk v)
-              (snek:move-vert? v (rnd:in-circ 0.4d0))))
+              (snek:move-vert? v (rnd:in-circ (* scale 0.4d0)))))
           (snek:itr-grps (snk g :collect nil)
             (sandpaint:bzspl-stroke sand
               (bzspl:make (snek:get-grp-verts snk :g g))
-              200)))))
+              (* scale 200))))))
 
-    (sandpaint:save sand fn :gamma 1.5)))
+    (sandpaint:save sand fn :gamma (* scale 1.5))))
 
-(time (main 1000 (second (cmd-args))))
+(time (main (parse-integer (second (cmd-args))) (third (cmd-args))))
 

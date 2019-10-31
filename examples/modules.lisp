@@ -2,6 +2,7 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
 
 (defun run-join (snk)
   (snek:with (snk :zwidth 100.0d0)

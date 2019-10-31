@@ -1,3 +1,4 @@
+(require :snek)
 
 (defun get-grid (size edge ngrid)
   (loop for x of-type double-float in (math:linspace ngrid edge (- size edge)) collect

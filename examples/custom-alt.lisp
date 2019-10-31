@@ -2,6 +2,7 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
 
 (defun circ-stroke (sand vv)
   (sandpaint:circ sand

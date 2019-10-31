@@ -7,7 +7,7 @@
 (load "../utils/state")
 
 
-(defvar *alphabet* "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,?-—:'")
+(defvar *alphabet* "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,?--:'")
 
 
 (defun scale ()

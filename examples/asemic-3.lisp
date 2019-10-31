@@ -3,7 +3,7 @@
 (load "../src/load")
 (load "../utils/state")
 
-
+(asdf:load-system "snek")
 
 (defun test-centroids (counts nc ncn)
   (reduce (lambda (x y) (and x y))

@@ -3,6 +3,7 @@
 (load "../src/load")
 (load "../utils/state")
 
+(asdf:load-system "snek")
 
 
 (defun init-line (sxy width line-chars char-num char-rad)
@@ -11,10 +12,10 @@
       (loop
         for char-pos-x in (rnd:rndspace line-chars sx (+ sx width) :order t)
         for char-pos-y in (rnd:rndspace line-chars (- sy 10d0) (+ sy 10d0))
-        for char-height in (math:add (rnd:rndspace line-chars 0.4d0 1d0)
+        for char-height in (math:dadd (rnd:rndspace line-chars 0.4d0 1d0)
                                      (math:dscale*
                                        (rnd:bernoulli line-chars 0.05d0)
-                                       2d0))
+                                       2.0d0))
         collect
           (snek:add-verts! snk
             (mapcar

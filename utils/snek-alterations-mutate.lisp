@@ -1,4 +1,4 @@
-
+(require :snek)
 (in-package :snek)
 
 (defstruct (mutate (:constructor -make-mutate))

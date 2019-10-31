@@ -1,3 +1,4 @@
+(require :snek)
 
 (defun -get-force-alterations (u v f)
   (list (snek:move-vert? v f) (snek:move-vert? u (vec:scale f -1.0d0))))

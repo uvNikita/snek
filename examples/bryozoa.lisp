@@ -3,6 +3,7 @@
 (load "../src/load")
 (load "../utils/state")
 
+(asdf:load-system "snek")
 
 
 (defun roll-once (aa)

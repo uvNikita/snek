@@ -3,6 +3,7 @@
 (load "../src/load")
 (load "../utils/grid")
 
+(asdf:load-system "snek")
 
 
 (defun mixed (x f)

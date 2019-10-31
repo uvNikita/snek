@@ -3,6 +3,7 @@
 (load "../src/load")
 (load "../utils/snek-alterations-mutate")
 
+(asdf:load-system "snek")
 
 
 (defmacro mutate ((mutate) &body body)

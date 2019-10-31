@@ -3,7 +3,7 @@
 (load "../src/load")
 (load "../utils/force")
 
-
+(asdf:load-system "snek")
 
 (defun main (size fn)
 

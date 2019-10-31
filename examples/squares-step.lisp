@@ -2,6 +2,8 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
+
 (rnd:set-rnd-state 1)
 
 

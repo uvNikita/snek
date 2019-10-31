@@ -2,6 +2,7 @@
 
 (load "../src/load.lisp")
 
+(asdf:load-system "snek")
 
 
 (defun init (snk rep rad)

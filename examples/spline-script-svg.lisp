@@ -6,8 +6,9 @@
 (load "../utils/spline-script")
 (load "../utils/state")
 
+(asdf:load-system "snek")
 
-(defvar *alphabet* "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,?-—:'")
+(defvar *alphabet* "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,?--:'")
 
 
 (defun scale ()

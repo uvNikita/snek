@@ -1,3 +1,4 @@
+(require :snek)
 
 (defstruct spline-glyph
   (name nil :type character :read-only t)

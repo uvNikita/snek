@@ -2,6 +2,7 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
 
 
 (defun main (size fn)

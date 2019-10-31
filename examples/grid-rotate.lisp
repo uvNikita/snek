@@ -5,6 +5,7 @@
 (load "../utils/grid")
 
 
+(asdf:load-system "snek")
 
 (defun place-grid (snk small large mid)
   (let* ((df (math:dfloat (half (- large small))))
@@ -34,9 +35,9 @@
         (snek:itr-verts (snk v)
           ;(snek:move-vert? v (funcall state-gen v 0.0009d0))
           (snek:move-vert? v (rnd:in-circ 0.5d0))))
-      ;(snek:itr-grps (snk g)
-      ;  (sandpaint:pix sand
-      ;    (bzspl:rndpos (snek:get-grp-as-bzspl snk g) 500)))
+      (snek:itr-grps (snk g)
+       (sandpaint:pix sand
+         (bzspl:rndpos (snek:get-grp-as-bzspl snk g) 500)))
       )
 
       (snek:itr-grps (snk g)

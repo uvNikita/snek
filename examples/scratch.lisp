@@ -2,6 +2,7 @@
 
 (load "../src/load")
 
+(asdf:load-system "snek")
 
 (defun sum-alter-velocity (velocities a num)
   (loop for i from 1 to (1- num) do
