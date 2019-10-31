@@ -14,17 +14,24 @@
                            :g g)))))
 
 (defun main (size fn)
-  (let ((grains 4)
+  (let* ((scale (/ size 1000))
+        (border (* scale 200d0))
+        (grains (* scale scale 4))
         (itt 10000)
-        (noise 0.000000018d0)
+        (noise (* scale 0.000000018d0))
         (rep 10)
-        (rad 25d0)
+        (rad (* scale 25d0))
         (snk (snek:make :max-verts 10000))
         (sand (sandpaint:make size
                               :fg (pigment:white 0.005)
                               :bg (pigment:gray 0.1d0))))
 
-    (init snk rep rad)
+    (loop for x in (math:linspace rep border (- size border)) for i from 0 do
+      (loop for y in (math:linspace rep border (- size border)) for j from 0 do
+        (let ((g (snek:add-grp! snk :type 'path)))
+          (snek:add-polygon! snk (rnd:rndi 3 6) rad
+                             :xy (vec:vec x y)
+                             :g g))))
 
     (let ((grp-states (make-hash-table :test #'equal)))
       (snek:itr-grps (snk g)
@@ -48,5 +55,5 @@
     (sandpaint:save sand fn)))
 
 
-(time (main 1000 (second (cmd-args))))
+(time (main (parse-integer (third (cmd-args))) (second (cmd-args))))
 
