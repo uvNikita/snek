@@ -72,9 +72,9 @@
           (snek:itr-grps (snk g :collect nil)
             (sandpaint:bzspl-stroke sand
               (bzspl:make (snek:get-grp-verts snk :g g))
-              (* scale 200))))))
+              (* scale scale 200))))))
 
-    (sandpaint:save sand fn :gamma (* scale 1.5))))
+    (sandpaint:save sand fn :gamma 1.5)))
 
-(time (main (parse-integer (second (cmd-args))) (third (cmd-args))))
+(time (main (parse-integer (third (cmd-args))) (second (cmd-args))))
 
